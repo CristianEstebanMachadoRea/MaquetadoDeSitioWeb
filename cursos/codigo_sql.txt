@@ -1,0 +1,24 @@
+-- Crear tabla `cursos`
+CREATE TABLE cursos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(255) NOT NULL,
+  descripcion TEXT,
+  fecha_inicio DATE,
+  cupo INT NOT NULL
+);
+
+-- Crear tabla `inscripciones`
+CREATE TABLE inscripciones (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  curso_id INT NOT NULL,
+  nombre_estudiante VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  fecha_inscripcion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (curso_id) REFERENCES cursos(id)
+);
+
+
+INSERT INTO cursos (nombre, descripcion, fecha_inicio, cupo) VALUES
+('Curso de desarrollo web', 'Curso básico de MySQL', '2024-12-01', 30),
+('Curso de PHP', 'Curso basico de PHP', '2024-12-05', 25),
+('Curso de java', 'Curso introductorio de Javascript', '2024-12-06', 25);
